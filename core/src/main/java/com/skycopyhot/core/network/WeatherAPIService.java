@@ -13,9 +13,9 @@ import rx.Observable;
  */
 public interface WeatherAPIService {
 
-    @GET("data/2.5/weather?lat={lat}&lon={lon}")
-    Observable<CurrentWeatherResponse> getCurrentWeather(@Path("lat") String lat, @Path("lon") String lon);
+    @GET("data/2.5/weather?lat={lat}&lon={lon}&apikey={key}")
+    Observable<CurrentWeatherResponse> getCurrentWeather(@Path("lat") String lat, @Path("lon") String lon, @Path("key") String key);
 
-    @GET("data/2.5/forecast?lat={lat}&lon={lon}")
-    Observable<ForecastWeatherResponse> getForecastWeather(@Path("lat") String lat, @Path("lon") String lon);
+    @GET("data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&apikey={key}")
+    Observable<ForecastWeatherResponse> getForecastWeather(@Path("lat") String lat, @Path("lon") String lon, @Path("cnt") String cnt, @Path("key") String key);
 }

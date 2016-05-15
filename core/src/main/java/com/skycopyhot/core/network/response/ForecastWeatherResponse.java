@@ -31,56 +31,72 @@ public class ForecastWeatherResponse extends BaseResponse {
     private List<Forecast> list = new ArrayList<>();
 
     /**
-     * @return The city
+     *
+     * @return
+     * The city
      */
     public City getCity() {
         return city;
     }
 
     /**
-     * @param city The city
+     *
+     * @param city
+     * The city
      */
     public void setCity(City city) {
         this.city = city;
     }
 
     /**
-     * @return The message
+     *
+     * @return
+     * The message
      */
     public Double getMessage() {
         return message;
     }
 
     /**
-     * @param message The message
+     *
+     * @param message
+     * The message
      */
     public void setMessage(Double message) {
         this.message = message;
     }
 
     /**
-     * @return The cnt
+     *
+     * @return
+     * The cnt
      */
     public Integer getCnt() {
         return cnt;
     }
 
     /**
-     * @param cnt The cnt
+     *
+     * @param cnt
+     * The cnt
      */
     public void setCnt(Integer cnt) {
         this.cnt = cnt;
     }
 
     /**
-     * @return The list
+     *
+     * @return
+     * The list
      */
     public List<Forecast> getList() {
         return list;
     }
 
     /**
-     * @param list The list
+     *
+     * @param list
+     * The list
      */
     public void setList(List<Forecast> list) {
         this.list = list;
