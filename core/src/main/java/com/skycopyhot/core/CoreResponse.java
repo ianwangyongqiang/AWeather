@@ -5,6 +5,7 @@ import android.os.Bundle;
 /**
  * Created by yongqiang
  * 14/5/16
+ * Core response for UI
  */
 public class CoreResponse {
 
@@ -17,6 +18,9 @@ public class CoreResponse {
     public static final String WEATHER_TEMP_MAX = "WEATHER_TEMP_MAX";
     public static final String DATE = "DATE";
 
+    /**
+     * response data are stored here, the keys are the above
+     */
     public Bundle mExtraData = new Bundle();
 
 }

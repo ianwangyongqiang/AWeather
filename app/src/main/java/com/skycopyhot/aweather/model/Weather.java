@@ -6,6 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by yongqiang
  * 17/5/16
+ * weather model
  */
 public class Weather implements Parcelable {
 

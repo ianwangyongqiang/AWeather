@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by yongqiang
  * 14/5/16
+ * the okHttp
  */
 public class HttpCore {
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 /**
  * Created by yongqiang
  * 15/5/16
+ * navigation for activities
  */
 public final class Navigator {
 

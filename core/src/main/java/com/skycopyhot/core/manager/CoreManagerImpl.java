@@ -27,6 +27,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by yongqiang
  * 14/5/16
+ * implement of the core manager
  */
 class CoreManagerImpl {
 

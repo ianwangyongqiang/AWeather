@@ -19,7 +19,14 @@ public class WeatherApplication extends Application {
 
     private static WeatherApplication mInstance;
 
+    /**
+     * judge if it is ready for Core
+     */
     private boolean mReady = false;
+
+    /**
+     * judge the network status
+     */
     private boolean mIsConnected = false;
 
     @Override

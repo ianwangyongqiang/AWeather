@@ -9,6 +9,7 @@ import rx.Observable;
 /**
  * Created by yongqiang
  * 14/5/16
+ * Core manager for the helper
  */
 public class CoreManager {
 
