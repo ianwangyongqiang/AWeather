@@ -15,6 +15,7 @@ public class CoreResponse {
     public static final String WEATHER_TEMP_AVERAGE = "WEATHER_TEMP_AVERAGE";
     public static final String WEATHER_TEMP_MIN = "WEATHER_TEMP_MIN";
     public static final String WEATHER_TEMP_MAX = "WEATHER_TEMP_MAX";
+    public static final String DATE = "DATE";
 
     public Bundle mExtraData = new Bundle();
 

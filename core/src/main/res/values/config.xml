@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="base_api">http://http://api.openweathermap.org</string>
+    <string name="base_api">http://api.openweathermap.org</string>
     <string name="api_key">c10bd329db3de95bfc44b776e455dfb3</string>
 </resources>

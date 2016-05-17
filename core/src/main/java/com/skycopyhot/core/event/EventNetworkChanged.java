@@ -12,4 +12,7 @@ public class EventNetworkChanged {
         mIsConnected = isConnected;
     }
 
+    public boolean isConnected() {
+        return mIsConnected;
+    }
 }

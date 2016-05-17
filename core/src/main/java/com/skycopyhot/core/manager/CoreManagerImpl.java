@@ -13,7 +13,12 @@ import com.skycopyhot.core.model.Weather;
 import com.skycopyhot.core.network.response.CurrentWeatherResponse;
 import com.skycopyhot.core.network.response.ForecastWeatherResponse;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -60,7 +65,11 @@ class CoreManagerImpl {
         return Observable.create(new Observable.OnSubscribe<CoreResponse>() {
             @Override
             public void call(final Subscriber<? super CoreResponse> subscriber) {
-                NetworkManager.translate(mNetworkManager.getService().getCurrentWeather(String.valueOf(lat), String.valueOf(lon), mNetworkManager.getContext().getString(R.string.api_key)))
+                Map<String, String> options = new HashMap<>();
+                options.put("lat", String.valueOf(lat));
+                options.put("lon", String.valueOf(lon));
+                options.put("apikey", mNetworkManager.getContext().getString(R.string.api_key));
+                NetworkManager.translate(mNetworkManager.getService().getCurrentWeather(options))
                         .subscribeOn(Schedulers.io())
                         .subscribe(new Subscriber<CurrentWeatherResponse>() {
                             @Override
@@ -111,7 +120,12 @@ class CoreManagerImpl {
         return Observable.create(new Observable.OnSubscribe<CoreResponse>() {
             @Override
             public void call(final Subscriber<? super CoreResponse> subscriber) {
-                NetworkManager.translate(mNetworkManager.getService().getForecastWeather(String.valueOf(lat), String.valueOf(lon), cnt, mNetworkManager.getContext().getString(R.string.api_key)))
+                Map<String, String> options = new HashMap<>();
+                options.put("lat", String.valueOf(lat));
+                options.put("lon", String.valueOf(lon));
+                options.put("cnt", cnt);
+                options.put("apikey", mNetworkManager.getContext().getString(R.string.api_key));
+                NetworkManager.translate(mNetworkManager.getService().getForecastWeather(options))
                         .subscribeOn(Schedulers.io())
                         .subscribe(new Subscriber<ForecastWeatherResponse>() {
                             @Override
@@ -139,7 +153,9 @@ class CoreManagerImpl {
                                     ArrayList<String> tempAveList = new ArrayList<>();
                                     ArrayList<String> tempMinList = new ArrayList<>();
                                     ArrayList<String> tempMaxList = new ArrayList<>();
+                                    ArrayList<String> dateList = new ArrayList<>();
                                     for (Forecast forecast : forecastWeatherResponse.getList()) {
+                                        dateList.add(CoreManagerImpl.getDate(forecast.getDt()));
                                         Weather weather = forecast.getWeather().get(0);
                                         if (!TextUtils.isEmpty(weather.getDescription())) {
                                             descriptionList.add(weather.getDescription());
@@ -163,6 +179,7 @@ class CoreManagerImpl {
                                     response.mExtraData.putStringArrayList(CoreResponse.WEATHER_TEMP_AVERAGE, tempAveList);
                                     response.mExtraData.putStringArrayList(CoreResponse.WEATHER_TEMP_MIN, tempMinList);
                                     response.mExtraData.putStringArrayList(CoreResponse.WEATHER_TEMP_MAX, tempMaxList);
+                                    response.mExtraData.putStringArrayList(CoreResponse.DATE, dateList);
                                     subscriber.onNext(response);
                                 }
                             }
@@ -177,5 +194,10 @@ class CoreManagerImpl {
 
     private static String getTempString(Double temp) {
         return String.valueOf(temp) +  "℉";
+    }
+
+    private static String getDate(Integer date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return format.format(new Date((long) date * 1000));
     }
 }
